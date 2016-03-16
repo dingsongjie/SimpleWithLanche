@@ -98,16 +98,16 @@
       <HintPath>..\packages\Lanche.DynamicWebApi.1.0.0.0\lib\net451\Lanche.DynamicWebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.Entityframework, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.Entityframework.1.0.0.1\lib\net451\Lanche.Entityframework.dll</HintPath>
+    <Reference Include="Lanche.Entityframework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lanche.Entityframework.1.0.0.2\lib\net451\Lanche.Entityframework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.Log.1.0.0.0\lib\net451\Lanche.Log.dll</HintPath>
+    <Reference Include="Lanche.Log, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lanche.Log.1.0.0.1\lib\net451\Lanche.Log.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.MemoryCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.MemoryCache.1.0.0.0\lib\net451\Lanche.MemoryCache.dll</HintPath>
+    <Reference Include="Lanche.MemoryCache, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lanche.MemoryCache.1.0.0.1\lib\net451\Lanche.MemoryCache.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Lanche.MessageQueue, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -118,20 +118,20 @@
       <HintPath>..\packages\Lanche.MongoDB.1.0.0.0\lib\net451\Lanche.MongoDB.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.RabbitMq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.RabbitMq.1.0.0.0\lib\net451\Lanche.RabbitMq.dll</HintPath>
+    <Reference Include="Lanche.RabbitMq, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lanche.RabbitMq.1.0.0.1\lib\net451\Lanche.RabbitMq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.Redis.1.0.0.0\lib\net451\Lanche.Redis.dll</HintPath>
+    <Reference Include="Lanche.Redis, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lanche.Redis.1.0.0.1\lib\net451\Lanche.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Lanche.UnitOfWork, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lanche.UnitOfWork.1.0.0.0\lib\net451\Lanche.UnitOfWork.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.Web.1.0.0.0\lib\net451\Lanche.Web.dll</HintPath>
+    <Reference Include="Lanche.Web, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lanche.Web.1.0.0.1\lib\net451\Lanche.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Lanche.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
