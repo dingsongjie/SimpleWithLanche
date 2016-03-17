@@ -81,8 +81,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Lanche.Domain, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lanche.Domain.1.0.0.1\lib\net451\Lanche.Domain.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Lanche.Domain.1.0.0.2\lib\net451\Lanche.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Lanche.DynamicWebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lanche.DynamicWebApi.1.0.0.0\lib\net451\Lanche.DynamicWebApi.dll</HintPath>
@@ -179,17 +179,17 @@
     <Compile Include="TestApplicationBiz.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{ba939141-2922-462d-8df2-485f60bc4727}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{ba939141-2922-462d-8df2-485f60bc4727}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

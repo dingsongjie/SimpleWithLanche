@@ -1,0 +1,123 @@
+﻿body {
+    font-family: "Microsoft Yahei",微软雅黑,"Helvetica Neue",Arial,sans-serif;
+    -ms-overflow-style: scrollbar;
+}
+
+.head-menu li a {
+    padding: 0px 20px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+    .head-menu li a:hover {
+        padding: 0px 20px;
+        height: 40px;
+        line-height: 40px;
+        vertical-align: middle;
+        background-color: #e1e3e9;
+        color: #333333;
+    }
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background: #3c8dbc;
+}
+
+
+/*自定义File样式*/
+.new-contentarea {
+    /*width: 100%;*/
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+
+    .new-contentarea label {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .new-contentarea input[type=file] {
+        width: 188px;
+        height: 60px;
+        background: #333;
+        margin: 0 auto;
+        position: absolute;
+        right: 50%;
+        margin-right: -94px;
+        top: 0;
+        right /*\**/: 0px\9;
+        margin-right /*\**/: 0px\9;
+        width /*\**/: 10px\9;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        z-index: 2;
+    }
+
+a.upload-img {
+    width: 130px;
+    display: inline-block;
+    /*margin-bottom: 10px;*/
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #3c8dbc;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+    a.upload-img:hover {
+        color: #FFFFFF;
+        background-color: #337ab7;
+        cursor: pointer;
+    }
+
+.form-group .has-error {
+    color: #a94442;
+}
+
+/* 自定义多级下拉菜单 */
+.navbar .dropdown-submenu { 
+   position: relative; 
+}
+
+.navbar .dropdown-submenu > a:after {
+    top: 8px;
+    right: 9px;
+    font-size: 11px;
+    content: "\f105";
+    position: absolute;
+    font-weight: normal;
+    display: inline-block;
+    font-family: FontAwesome;
+}
+.navbar .dropdown-submenu > .dropdown-menu { 
+	top: 0px; 
+	left: 100%; 
+	margin-top: -5px; 
+	margin-left: 0px;
+	border-radius:0px;
+}
+
+/* Submenu comes from LEFT side */
+.navbar .dropdown-submenu > .dropdown-menu .submenu-left {
+	left: -100%;
+}
+
+.navbar .dropdown-submenu:hover > .dropdown-menu {  
+   	display: block;
+}
+
+.floatAlert{
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+    filter:alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity: 0.9;
+    opacity: 0.9;
+}
