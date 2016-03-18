@@ -6,6 +6,7 @@ namespace UnitTest
     using System.Linq;
     
     using Lanche.Entityframework.UnitOfWork;
+    using Domain.EntityFramework;
 
     public  class TestDbContext : DbContextBase
     {
@@ -14,7 +15,7 @@ namespace UnitTest
         {
         }
 
-        public virtual DbSet<Students> Students { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

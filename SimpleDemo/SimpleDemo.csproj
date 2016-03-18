@@ -90,9 +90,9 @@
       <HintPath>..\packages\Lanche.Core.1.0.0.0\lib\net451\Lanche.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.Domain, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lanche.Domain, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Lanche.Domain.1.0.0.2\lib\net451\Lanche.Domain.dll</HintPath>
+      <HintPath>..\packages\Lanche.Domain.1.0.0.4\lib\net451\Lanche.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Lanche.DynamicWebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lanche.DynamicWebApi.1.0.0.0\lib\net451\Lanche.DynamicWebApi.dll</HintPath>
@@ -2081,8 +2081,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

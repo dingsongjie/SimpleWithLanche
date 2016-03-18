@@ -1,5 +1,264 @@
 ﻿@{
-    ViewBag.Title = "主页";
+    ViewBag.Title = "这是一个增删改查的示例";
+}
+@section head
+{
+    <!-- DATA TABLES -->
+    <link href="@Url.Content("~/Content/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css" />
+}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">查询条件</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form id="searchForm" class="form-inline">
+
+                        <div class="form-group" style="margin-left:10px;">
+                            <label>学生名称：</label>
+                            <input id="Name" type="text" class="form-control" />
+                        </div>
+
+                        <div class="form-group" style="margin-left:10px;">
+                            <button id="btnSearch" type="button" class="btn btn-block btn-primary">查&nbsp;&nbsp;&nbsp;&nbsp;询</button>
+                        </div>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <div class="form-group" style="margin-left:10px;">
+                            <button id="btnAddship" type="button" class="btn btn-block btn-primary " >新增</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">查询结果</h3>
+                </div>
+                <div class="box-body">
+                    <table id="SearchListTable" class="table table-bordered table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>年龄</th>
+                                <th>添加时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section modal{
+    @*编辑Modal*@
+    <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myEditModalLabel">编辑字典信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">学生名称：</label>
+                            <div class="col-xs-8">
+                                <input name="Name" id="ModalName" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">学生年龄：</label>
+                            <div class="col-xs-8">
+                                <input name="Age" id="ModalAge" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关&nbsp;&nbsp;&nbsp;&nbsp;闭</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveInfo">保&nbsp;&nbsp;&nbsp;&nbsp;存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*删除Modal*@
+    <div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myDeleteModalLabel">删除确认</h4>
+                </div>
+                <div class="modal-body">
+                    <input name="deleteRecordId" id="deleteRecordId" type="text" class="form-control" style="display:none;" />
+                    您确认要删除该条记录么？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取&nbsp;&nbsp;&nbsp;&nbsp;消</button>
+                    <button type="button" class="btn btn-primary  " id="btnDeleteInfo">确&nbsp;&nbsp;&nbsp;&nbsp;认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section script{
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap3-typeahead.min.js")" type="text/javascript"></script>
+    <!-- DATA TABES SCRIPT -->
+    <script src="@Url.Content("~/Content/plugins/datatables/jquery.dataTables.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/datatables/dataTables.bootstrap.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/jquery-validation/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/jquery-validation/localization/messages_zh.min.js")" type="text/javascript"></script>
+    <script>
+        $(function () {
+
+            var table = $('#SearchListTable').DataTable({
+                "ajax": {
+                    "type": "post",
+                    "url": '@Url.Content("/api/services/Simple/Student/GetList")',
+                    "data": function (data) {
+                        data.Entity = {};
+                        data.Entity.Name = $("#ENT_NAME").val();
+                        return data;
+                    }
+
+
+                },
+                "bProcessing": true,
+                "columnDefs": [
+                    { "data": "Id", "visible": false },
+                    //{ "targets": 0, "sWidth": "4%", "data": null, "defaultContent": "" },
+                    { "searchable": false, "orderable": false, "targets": 0, "sWidth": "5%", "data": null },
+                    { "targets": 1, "sWidth": "14%","searchable":true, "data": "Name" },
+                    { "targets": 2, "sWidth": "14%", "data": "Age" },
+                    { "targets": 3, "sWidth": "14%", "data": "CreateTime" },
+                    {
+                        "targets": 4, "sWidth": "14%", "data": "ID", "searchable": false, "orderable": false, "render": function (data, type, row) {
+                            return "<a href=\"javascript:void(0);\" onclick=\"loadEditModal('" + row.Id + "','edit')\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:void(0);\" onclick=\"confirmDelete('" + row.Id + "')\" class='shouldPremission' >删除</a>"
+                        }
+                    }
+                ],
+                "order": [[1, 'asc']],
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": true,
+                "bInfo": true,
+                "sAjaxDataProp": "Data",
+                "bAutoWidth": false,
+                "iDisplayLength": 10,
+                "bServerSide": true,
+            });
+
+            table.on('order.dt search.dt', function () {
+                table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            });
+          
+
+            $('#btnAddship').bind('click', function () {
+                entityObj = null;
+                $('#myEditModal').modal();
+
+            });
+
+            $('#btnSaveInfo').bind('click', function () {
+                    $.ajax({
+                        type: "post",
+                        url: '@Url.Content("/api/services/Simple/Student/InsertOrUpdate")',
+                        cache: false,
+                        data: getSavedEntity(),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.Success == true) {
+                                bootStrapAlert('content-header', 'before', 'success', '保存成功！', 3000);
+                                table.ajax.reload();
+                            }
+                            else {
+                                bootStrapAlert('content-header', 'before', 'danger', '保存失败！');
+                            }
+                        }
+                    });
+
+                $('#myEditModal').modal('hide');
+            });
+
+            $('#btnDeleteInfo').bind('click', function () {
+                $('#myDeleteModal').modal('hide');
+                $.ajax({
+                    type: "get",
+                    url:' @Url.Content("/api/services/Simple/Student/Delete")',
+                    data: { recordId: $("#deleteRecordId").val() },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.result == true) {
+                            bootStrapAlert('content-header', 'before', 'success', '删除成功！', 3000);
+                            table.ajax.reload();
+                        }
+                        else {
+                            bootStrapAlert('content-header', 'before', 'danger', '删除失败！');
+                        }
+                    }
+                });
+
+            });
+            $("#btnSearch").bind("click", function () {
+                table.ajax.reload();
+            })
+
+
+            })
+            function confirmDelete(rId) {
+                $('#deleteRecordId').val(rId);
+                $('#myDeleteModal').modal();
+            }
+            function loadEditModal(rId, viewType) {
+                $.ajax({
+                    type: "get",
+                    url: '@Url.Content("/api/services/Simple/Student/GetSingle")',
+                    data: { id: rId },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.Success == true) {
+                            $("#ModalName").val(data.Data.Name);
+                            $("#ModalAge").val(data.Data.Age);
+                            entityObj=data.Data;
+                        }
+                        $('#myEditModal').modal();
+
+                    }
+                });
+            }
+            function getSavedEntity() {
+                var object = $("#editForm").serializeArray();
+
+                if (entityObj != null) {
+                    var result = curdHelper.addEditedData(entityObj, object);
+                    return result;
+                }
+                return object
+            }
+
+    </script>
 }
 
-<h3></h3>
+
+

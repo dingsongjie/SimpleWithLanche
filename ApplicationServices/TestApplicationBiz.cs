@@ -1,4 +1,5 @@
 ﻿using Castle.Core.Logging;
+using Domain.EntityFramework;
 using Lanche.Core.Application;
 using Lanche.Domain.Repository;
 using Lanche.Domain.Repository.Paging;
@@ -20,18 +21,18 @@ namespace UnitTest
     //localhost://api/services/Simple/test/
     public class TestApplicationBiz : ApplicationBizBase
     {
-        private readonly IEfRepository<Students> _studentRepository;
+        private readonly IEfRepository<Student> _studentRepository;
         private readonly IUnitOfWorkManager _uowManger;
         private readonly ILogger _logger;
 
-        public TestApplicationBiz(IEfRepository<Students> studentRepository, IUnitOfWorkManager uowManger,ILogger logger)
+        public TestApplicationBiz(IEfRepository<Student> studentRepository, IUnitOfWorkManager uowManger,ILogger logger)
         {
             _studentRepository = studentRepository;
             _uowManger = uowManger;
             _logger = logger;
         }
         
-        public virtual PagingEntity<Students> GetInPaging(int pageIndex, int PageSize, bool sort, string orderProperty)
+        public virtual PagingEntity<Student> GetInPaging(int pageIndex, int PageSize, bool sort, string orderProperty)
         {
             _logger.Debug("ss");
             return _studentRepository.GetInPaging(m => m.IsDeleted == false, pageIndex, PageSize, orderProperty, sort);
@@ -39,17 +40,17 @@ namespace UnitTest
         }
         // localhost://api/services/Simple/test/GetInPagingS
         [DefaultAuthorizeAttribute]
-        public virtual List<Students> GetInPagingS()
+        public virtual List<Student> GetInPagingS()
         {
 
             var v = _studentRepository.GetAll().OrderBy(m => m.Age).Where(m => m.IsDeleted == false).Skip(1).Take(1).ToList();
             return v;
         }
-        public virtual Students GetOne(string name)
+        public virtual Student GetOne(string name)
         {
             return _studentRepository.Single(m => m.Name == name);
         }
-        public virtual List<Students> GetList(string name)
+        public virtual List<Student> GetList(string name)
         {
             return _studentRepository.GetAllList(m => m.Name != name);
         }
@@ -57,31 +58,31 @@ namespace UnitTest
         {
             return _studentRepository.Count(m => m.Name != name);
         }
-        public virtual Students Add(Students s)
+        public virtual Student Add(Student s)
         {
             return _studentRepository.Insert(s);
         }
-        public virtual void AddBulk(IEnumerable<Students> students)
+        public virtual void AddBulk(IEnumerable<Student> Student)
         {
-            _studentRepository.BulkInsert(students);
+            _studentRepository.BulkInsert(Student);
 
         }
         public virtual int DeleteLot(int age)
         {
             return _studentRepository.Delete(m => m.Age > age);
         }
-        public virtual void Delete(Students s)
+        public virtual void Delete(Student s)
         {
             _studentRepository.Delete(s);
         }
 
-        public virtual void Update(Students student)
+        public virtual void Update(Student student)
         {
             _studentRepository.Update(student);
         }
         public virtual void UpdateLot(int age, string name)
         {
-            _studentRepository.Update(m => m.Age > age, m => new Students() { Name = name });
+            _studentRepository.Update(m => m.Age > age, m => new Student() { Name = name });
         }
         public virtual int SqlQuery(string sql)
         {
@@ -89,7 +90,7 @@ namespace UnitTest
         }
 
         [UnitOfWork(isTransactional: true)]
-        public virtual void TransactionMethod(Students s)
+        public virtual void TransactionMethod(Student s)
         {
 
             _studentRepository.InsertAsync(s);
@@ -99,7 +100,7 @@ namespace UnitTest
         }
         
      
-        public virtual Task<Students> GetOneAsync(string name)
+        public virtual Task<Student> GetOneAsync(string name)
         {
             return _studentRepository.SingleAsync(m => m.Name == name);
         }

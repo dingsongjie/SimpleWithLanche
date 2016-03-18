@@ -80,9 +80,9 @@
       <HintPath>..\packages\Lanche.Core.1.0.0.0\lib\net451\Lanche.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lanche.Domain, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lanche.Domain, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Lanche.Domain.1.0.0.2\lib\net451\Lanche.Domain.dll</HintPath>
+      <HintPath>..\packages\Lanche.Domain.1.0.0.4\lib\net451\Lanche.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Lanche.DynamicWebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lanche.DynamicWebApi.1.0.0.0\lib\net451\Lanche.DynamicWebApi.dll</HintPath>
@@ -91,6 +91,10 @@
     <Reference Include="Lanche.Entityframework, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lanche.Entityframework.1.0.0.1\lib\net451\Lanche.Entityframework.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Lanche.Extensions.JqueryDataTable, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Lanche.Extensions.JqueryDataTable.1.0.0.2\lib\net451\Lanche.Extensions.JqueryDataTable.dll</HintPath>
     </Reference>
     <Reference Include="Lanche.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lanche.Log.1.0.0.0\lib\net451\Lanche.Log.dll</HintPath>
@@ -173,13 +177,11 @@
   <ItemGroup>
     <Compile Include="ApplicationServiceModule.cs" />
     <Compile Include="CacheTestBiz.cs" />
+    <Compile Include="CurdSimple\StudentApplicationBiz.cs" />
     <Compile Include="MongoDbTestBizcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabbitMqTestBiz.cs" />
     <Compile Include="TestApplicationBiz.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
